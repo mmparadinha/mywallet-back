@@ -4,7 +4,6 @@ import { v4 as uuid } from "uuid";
 
 export async function registerUser(req, res) {
     const { name, email, password } = res.locals.user;
-    console.log(res.locals.user)
     const passwordHash = bcrypt.hashSync(password, 10);
 
     try {
