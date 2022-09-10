@@ -19,7 +19,7 @@ export async function registerUser(req, res) {
     }
 }
 
-export async function validateToken(req, res) {
+export async function createToken(req, res) {
     const { email, password } = req.body;
 
     try {
