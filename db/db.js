@@ -4,7 +4,12 @@ dotenv.config();
 
 const mongoClient = new MongoClient(process.env.MONGO_URI);
 
-await mongoClient.connect();
-const db = mongoClient.db("mywallet");
-
-export default db;
+export default function mongo() {
+    try {
+        let connection = mongoClient.db('mywallet');
+        return connection;
+    } catch (error) {
+        console.error(error)
+        return error;    
+    }
+}

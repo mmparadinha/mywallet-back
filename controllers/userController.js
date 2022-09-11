@@ -1,6 +1,8 @@
-import db from "../db/db.js";
+import mongo from "../db/db.js";
 import bcrypt from 'bcrypt';
 import { v4 as uuid } from "uuid";
+
+let db = mongo();
 
 export async function registerUser(req, res) {
     const { name, email, password } = res.locals.user;

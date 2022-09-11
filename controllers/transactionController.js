@@ -1,5 +1,7 @@
-import db from "../db/db.js";
+import mongo from "../db/db.js";
 import { ObjectId } from "mongodb";
+
+let db = mongo();
 
 export async function getTransactions(req, res) {
     const userId = req.headers.userid;
