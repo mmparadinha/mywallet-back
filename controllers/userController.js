@@ -31,8 +31,11 @@ export async function createToken(req, res) {
             await db.collection("sessions").insertOne({
                 userId: user._id,
                 token
-            })
-            res.status(200).send(token);
+            });
+            res.status(200).send({
+                userId: user._id,
+                token
+            });
         } else {
             res.sendStatus(409);
         }
