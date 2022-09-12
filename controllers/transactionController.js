@@ -65,3 +65,20 @@ export async function putTransaction(req, res) {
         res.sendStatus(500);
     }
 }
+
+export async function deleteTransaction(req, res) {
+    const { transactionId }= req.params;
+    const { authorization } = req.headers;
+    const token = authorization?.replace('Bearer ', '');
+
+    const loggedIn = await db.collection('sessions').findOne({ token });
+    if (loggedIn === null) {return res.status(422).send('Você precisa estar logado para fazer movimentações!')};
+
+    try {
+        await db.collection('transactions').deleteOne({ _id: ObjectId(transactionId) });
+        res.sendStatus(201);
+    } catch (error) {
+        console.error(error);
+        res.sendStatus(500);
+    }
+}
