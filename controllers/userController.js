@@ -9,12 +9,18 @@ export async function registerUser(req, res) {
     const passwordHash = bcrypt.hashSync(password, 10);
 
     try {
-        await db.collection('users').insertOne({
-            name,
-            email,
-            password: passwordHash
-        })
-        res.sendStatus(201);
+        const user = await db.collection('users').findOne({ email });
+
+        if (!user) {
+            await db.collection('users').insertOne({
+                name,
+                email,
+                password: passwordHash
+            })
+            res.sendStatus(201);
+        } else {
+            res.sendStatus(409);
+        }
     } catch (error) {
         console.error(error);
         res.sendStatus(500);
