@@ -42,7 +42,8 @@ export async function createToken(req, res) {
             });
             res.status(200).send({
                 userId: user._id,
-                token
+                token,
+                username: user.name
             });
         } else {
             res.sendStatus(409);
