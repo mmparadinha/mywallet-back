@@ -1,4 +1,6 @@
-import db from '../db/db.js';
+import mongo from '../db/db.js';
+
+let db = mongo();
 
 const validateEmail = async (req, res, next) => {
     const email = res.locals.user.email;

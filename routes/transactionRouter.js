@@ -3,7 +3,7 @@ import { getTransactions, postTransaction } from '../controllers/transactionCont
 import validateTransaction from '../middlewares/transactionSchemaValidationMiddleware.js';
 
 const transactionRouter = express.Router();
-transactionRouter.get('/transactions', getTransactions);
-transactionRouter.post('/transactions', validateTransaction, postTransaction);
+transactionRouter.get('/transaction', getTransactions);
+transactionRouter.post('/transaction', validateTransaction, postTransaction);
 
 export default transactionRouter;

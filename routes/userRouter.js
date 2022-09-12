@@ -4,7 +4,7 @@ import validateUser from '../middlewares/userSchemaValidationMIddleware.js';
 import validateEmail from '../middlewares/emailValidationMiddleware.js';
 
 const userRouter = express.Router();
-userRouter.post('/user', validateUser, validateEmail, registerUser);
-userRouter.get('/user', createToken);
+userRouter.post('/sign-up', validateUser, validateEmail, registerUser);
+userRouter.post('/', createToken);
 
 export default userRouter;
